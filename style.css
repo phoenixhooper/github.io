@@ -439,3 +439,102 @@ body.modal-open {
         height: 500px;
     }
 }
+/* =========================================
+   CASE STUDIES
+========================================= */
+
+.approach-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+}
+
+.approach-item {
+    background: white;
+    padding: 28px;
+}
+
+.approach-item > span {
+    color: #9aa5b4;
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.approach-item h3 {
+    font-size: 20px;
+    margin: 10px 0;
+}
+
+.approach-item p {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+
+.timeline {
+    max-width: 700px;
+}
+
+.timeline-row {
+    display: grid;
+    grid-template-columns: 70px 1fr;
+    gap: 20px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--line);
+}
+
+.timeline-row > span {
+    color: #7194a5;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .1em;
+}
+
+.timeline-row strong {
+    display: block;
+    font-family: 'Manrope';
+    font-size: 15px;
+}
+
+.timeline-row small {
+    display: block;
+    color: var(--muted);
+    font-size: 12px;
+    margin-top: 2px;
+}
+
+
+.program-highlight {
+    max-width: 750px;
+    padding: 35px;
+    background: var(--paper);
+    border-left: 3px solid var(--accent);
+}
+
+.program-highlight h3 {
+    font-size: 28px;
+    margin-bottom: 12px;
+}
+
+.program-highlight > p:last-child {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+
+@media (max-width: 800px) {
+
+    .approach-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .timeline-row {
+        grid-template-columns: 55px 1fr;
+    }
+
+    .program-highlight {
+        padding: 25px;
+    }
+}
