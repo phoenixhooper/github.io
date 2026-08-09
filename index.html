@@ -675,6 +675,68 @@
         }
 
     });
+	   /* Passport Dinner Series */
+
+const passportCard = document.querySelector('[data-project="passport"]');
+const passportModal = document.getElementById('passport-modal');
+const passportClose = passportModal.querySelector('.project-modal-close');
+
+passportCard.addEventListener('click', () => {
+    passportModal.classList.add('active');
+    document.body.classList.add('modal-open');
+});
+
+passportClose.addEventListener('click', () => {
+    passportModal.classList.remove('active');
+    document.body.classList.remove('modal-open');
+});
+
+passportModal.addEventListener('click', (event) => {
+    if (event.target === passportModal) {
+        passportModal.classList.remove('active');
+        document.body.classList.remove('modal-open');
+    }
+});
+
+
+/* Holiday Event Elevation */
+
+const holidayCard = document.querySelector('[data-project="holiday"]');
+const holidayModal = document.getElementById('holiday-modal');
+const holidayClose = holidayModal.querySelector('.project-modal-close');
+
+holidayCard.addEventListener('click', () => {
+    holidayModal.classList.add('active');
+    document.body.classList.add('modal-open');
+});
+
+holidayClose.addEventListener('click', () => {
+    holidayModal.classList.remove('active');
+    document.body.classList.remove('modal-open');
+});
+
+holidayModal.addEventListener('click', (event) => {
+    if (event.target === holidayModal) {
+        holidayModal.classList.remove('active');
+        document.body.classList.remove('modal-open');
+    }
+});
+
+
+/* Escape key closes all project modals */
+
+document.addEventListener('keydown', (event) => {
+
+    if (event.key === 'Escape') {
+
+        document.querySelectorAll('.project-modal.active').forEach(modal => {
+            modal.classList.remove('active');
+        });
+
+        document.body.classList.remove('modal-open');
+    }
+
+});
 </script>
 </body>
 </html>
