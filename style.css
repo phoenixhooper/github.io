@@ -131,3 +131,311 @@ footer { background: var(--navy); color: #7f8b9c; padding: 25px 0; font-size: 12
     .experience-item { grid-template-columns: 1fr; gap: 15px; }
     .project-grid { grid-template-columns: 1fr; }
 }
+/* =========================================
+   INTERACTIVE PROJECT CARDS
+========================================= */
+
+.project-clickable {
+    cursor: pointer;
+}
+
+.project-clickable:hover {
+    transform: translateY(-7px);
+}
+
+.project-clickable .project-footer span:last-child {
+    transition: transform .25s ease;
+}
+
+.project-clickable:hover .project-footer span:last-child {
+    transform: translateX(6px);
+}
+
+
+/* =========================================
+   PROJECT MODAL
+========================================= */
+
+body.modal-open {
+    overflow: hidden;
+}
+
+.project-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    background: rgba(4, 8, 15, .88);
+    backdrop-filter: blur(10px);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 30px;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition:
+        opacity .25s ease,
+        visibility .25s ease;
+}
+
+.project-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+.project-modal-content {
+    position: relative;
+
+    width: min(1200px, 100%);
+    max-height: 92vh;
+
+    overflow-y: auto;
+
+    background: #ffffff;
+    color: var(--ink);
+
+    padding: 55px;
+
+    border-radius: 8px;
+
+    box-shadow:
+        0 40px 100px rgba(0, 0, 0, .35);
+
+    transform: translateY(20px);
+    transition: transform .3s ease;
+}
+
+.project-modal.active .project-modal-content {
+    transform: translateY(0);
+}
+
+
+/* Close button */
+
+.project-modal-close {
+    position: absolute;
+    top: 22px;
+    right: 25px;
+
+    width: 42px;
+    height: 42px;
+
+    border: 1px solid var(--line);
+    border-radius: 50%;
+
+    background: white;
+    color: var(--ink);
+
+    font-size: 25px;
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition: .2s;
+}
+
+.project-modal-close:hover {
+    background: var(--navy);
+    color: white;
+}
+
+
+/* Modal header */
+
+.project-modal-header {
+    max-width: 850px;
+}
+
+.project-modal-header h2 {
+    font-size: clamp(36px, 5vw, 58px);
+    letter-spacing: -.045em;
+}
+
+.project-modal-header > p:last-child {
+    margin-top: 22px;
+    color: var(--muted);
+    max-width: 760px;
+}
+
+
+/* Dividers */
+
+.modal-divider {
+    height: 1px;
+    background: var(--line);
+    margin: 38px 0;
+}
+
+
+/* Project information */
+
+.project-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+}
+
+.modal-label {
+    color: #7194a5;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: .15em;
+    margin-bottom: 14px;
+}
+
+.project-detail-block > p:last-child {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+
+.modal-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.modal-tags span {
+    padding: 6px 10px;
+
+    border: 1px solid var(--line);
+    border-radius: 3px;
+
+    color: #4e5a6b;
+
+    font-size: 11px;
+    font-weight: 600;
+}
+
+
+/* Drawing viewer */
+
+.drawing-section {
+    margin-top: 10px;
+}
+
+.drawing-header {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+
+    gap: 30px;
+
+    margin-bottom: 20px;
+}
+
+.drawing-header h3 {
+    font-size: 27px;
+}
+
+
+.drawing-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.drawing-controls button {
+    border: 1px solid var(--line);
+    background: white;
+
+    padding: 9px 13px;
+
+    border-radius: 4px;
+
+    color: var(--ink);
+
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: .2s;
+}
+
+.drawing-controls button:hover:not(:disabled) {
+    background: var(--navy);
+    color: white;
+}
+
+.drawing-controls button:disabled {
+    opacity: .35;
+    cursor: not-allowed;
+}
+
+#drawing-counter {
+    color: #8a96a6;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+
+/* PDF */
+
+.pdf-viewer {
+    width: 100%;
+    height: 650px;
+
+    background: #e9edf1;
+
+    border: 1px solid var(--line);
+}
+
+.pdf-viewer iframe {
+    width: 100%;
+    height: 100%;
+
+    border: 0;
+}
+
+
+/* Open PDF button */
+
+.modal-file-actions {
+    margin-top: 20px;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 800px) {
+
+    .project-modal {
+        padding: 10px;
+    }
+
+    .project-modal-content {
+        max-height: 96vh;
+        padding: 35px 22px;
+    }
+
+    .project-modal-close {
+        top: 12px;
+        right: 12px;
+    }
+
+    .project-details {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .drawing-header {
+        display: block;
+    }
+
+    .drawing-controls {
+        margin-top: 18px;
+        flex-wrap: wrap;
+    }
+
+    .pdf-viewer {
+        height: 500px;
+    }
+}
