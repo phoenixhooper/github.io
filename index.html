@@ -144,13 +144,16 @@
                 </div>
 
                 <div class="project-grid">
-					<article class="project-card">
-                        <div class="project-number">01</div>
-                        <p class="project-type">CAD / TECHNICAL DOCUMENTATION</p>
-                        <h3>Warehouse Mapping & CAD Development</h3>
-                        <p>Mapped existing conditions, documented gas lines, and translated client concepts into validated CAD drawings for proposed interior additions.</p>
-                        <div class="project-footer"><span>Planning & Execution</span><span>→</span></div>
-                    </article>
+					<article class="project-card project-clickable" data-project="warehouse">
+    <div class="project-number">01</div>
+    <p class="project-type">CAD / TECHNICAL DOCUMENTATION</p>
+    <h3>Warehouse Mapping & CAD Development</h3>
+    <p>Mapped existing conditions, documented gas lines, and translated client concepts into validated CAD drawings for proposed interior additions.</p>
+    <div class="project-footer">
+        <span>View Project</span>
+        <span>→</span>
+    </div>
+</article>
                     <article class="project-card featured">
                         <div class="project-number">02</div>
                         <p class="project-type">EVENT SERIES</p>
@@ -217,6 +220,88 @@
                 </div>
             </div>
         </section>
+		<!-- WAREHOUSE PROJECT MODAL -->
+<div class="project-modal" id="warehouse-modal">
+    <div class="project-modal-content">
+
+        <button class="project-modal-close" aria-label="Close project">
+            ×
+        </button>
+
+        <div class="project-modal-header">
+            <p class="eyebrow">CAD / TECHNICAL DOCUMENTATION</p>
+            <h2>Warehouse Mapping & <span>CAD Development</span></h2>
+            <p>
+                Mapped existing conditions, documented active gas lines, and translated
+                client concepts into validated CAD drawings for proposed interior additions.
+            </p>
+        </div>
+
+        <div class="modal-divider"></div>
+
+        <div class="project-details">
+
+            <div class="project-detail-block">
+                <p class="modal-label">PROJECT ROLE</p>
+                <div class="modal-tags">
+                    <span>Field Measurement</span>
+                    <span>Requirements Gathering</span>
+                    <span>CAD Drafting</span>
+                    <span>Stakeholder Collaboration</span>
+                    <span>Technical Documentation</span>
+                </div>
+            </div>
+
+            <div class="project-detail-block">
+                <p class="modal-label">PROJECT OBJECTIVE</p>
+                <p>
+                    Map the warehouse floor, document active gas lines, and develop
+                    drawings for proposed interior additions based on client concepts
+                    and existing site conditions.
+                </p>
+            </div>
+
+        </div>
+
+        <div class="modal-divider"></div>
+
+        <div class="drawing-section">
+
+            <div class="drawing-header">
+                <div>
+                    <p class="modal-label">PROJECT DELIVERABLES</p>
+                    <h3 id="drawing-title">Warehouse Floor Plan</h3>
+                </div>
+
+                <div class="drawing-controls">
+                    <button id="previous-drawing">← Previous</button>
+                    <span id="drawing-counter">01 / 03</span>
+                    <button id="next-drawing">Next →</button>
+                </div>
+            </div>
+
+            <div class="pdf-viewer">
+                <iframe
+                    id="drawing-frame"
+                    src="assets/projects/warehouse/WarehouseUPDATED.pdf"
+                    title="Warehouse CAD Drawing">
+                </iframe>
+            </div>
+
+        </div>
+
+        <div class="modal-file-actions">
+            <a
+                id="open-pdf"
+                class="btn btn-primary"
+                href="assets/projects/warehouse/WarehouseUPDATED.pdf"
+                target="_blank">
+                Open Full PDF ↗
+            </a>
+        </div>
+
+    </div>
+</div>
     </main>
 
     <footer>
@@ -226,16 +311,140 @@
         </div>
     </footer>
 
-    <script>
-        const toggle = document.querySelector('.nav-toggle');
-        const links = document.querySelector('.nav-links');
-        toggle.addEventListener('click', () => {
-            const open = links.classList.toggle('open');
-            toggle.setAttribute('aria-expanded', open);
-        });
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => links.classList.remove('open'));
-        });
-    </script>
+   <script>
+    /* Mobile navigation */
+    const toggle = document.querySelector('.nav-toggle');
+    const links = document.querySelector('.nav-links');
+
+    toggle.addEventListener('click', () => {
+        const open = links.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', open);
+    });
+
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => links.classList.remove('open'));
+    });
+
+
+    /* Warehouse project viewer */
+
+    const warehouseCard = document.querySelector('[data-project="warehouse"]');
+    const warehouseModal = document.getElementById('warehouse-modal');
+    const closeModal = document.querySelector('.project-modal-close');
+
+    const drawingFrame = document.getElementById('drawing-frame');
+    const drawingTitle = document.getElementById('drawing-title');
+    const drawingCounter = document.getElementById('drawing-counter');
+    const openPdf = document.getElementById('open-pdf');
+
+    const previousDrawing = document.getElementById('previous-drawing');
+    const nextDrawing = document.getElementById('next-drawing');
+
+
+    const drawings = [
+        {
+            title: 'Warehouse Floor Plan',
+            file: 'assets/projects/warehouse/WarehouseUPDATED.pdf'
+        },
+        {
+            title: 'Gas Line Documentation',
+            file: 'assets/projects/warehouse/WarehouseGas.pdf'
+        },
+        {
+            title: 'Interior Additions',
+            file: 'assets/projects/warehouse/WarehouseInterior.pdf'
+        }
+    ];
+
+    let currentDrawing = 0;
+
+
+    function showDrawing(index) {
+
+        currentDrawing = index;
+
+        const drawing = drawings[currentDrawing];
+
+        drawingTitle.textContent = drawing.title;
+
+        drawingFrame.src = drawing.file;
+
+        openPdf.href = drawing.file;
+
+        drawingCounter.textContent =
+            String(currentDrawing + 1).padStart(2, '0') +
+            ' / ' +
+            String(drawings.length).padStart(2, '0');
+
+        previousDrawing.disabled = currentDrawing === 0;
+        nextDrawing.disabled = currentDrawing === drawings.length - 1;
+    }
+
+
+    function openWarehouseProject() {
+
+        warehouseModal.classList.add('active');
+
+        document.body.classList.add('modal-open');
+
+        showDrawing(0);
+    }
+
+
+    function closeWarehouseProject() {
+
+        warehouseModal.classList.remove('active');
+
+        document.body.classList.remove('modal-open');
+    }
+
+
+    warehouseCard.addEventListener('click', openWarehouseProject);
+
+    closeModal.addEventListener('click', closeWarehouseProject);
+
+
+    previousDrawing.addEventListener('click', () => {
+
+        if (currentDrawing > 0) {
+            showDrawing(currentDrawing - 1);
+        }
+
+    });
+
+
+    nextDrawing.addEventListener('click', () => {
+
+        if (currentDrawing < drawings.length - 1) {
+            showDrawing(currentDrawing + 1);
+        }
+
+    });
+
+
+    /* Close when clicking the dark background */
+
+    warehouseModal.addEventListener('click', (event) => {
+
+        if (event.target === warehouseModal) {
+            closeWarehouseProject();
+        }
+
+    });
+
+
+    /* Escape key closes the viewer */
+
+    document.addEventListener('keydown', (event) => {
+
+        if (event.key === 'Escape' &&
+            warehouseModal.classList.contains('active')) {
+
+            closeWarehouseProject();
+
+        }
+
+    });
+</script>
 </body>
 </html>
