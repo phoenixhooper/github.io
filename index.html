@@ -686,8 +686,9 @@
         </div>
     </footer>
 
-   <script>
+ <script>
     /* Mobile navigation */
+
     const toggle = document.querySelector('.nav-toggle');
     const links = document.querySelector('.nav-links');
 
@@ -701,187 +702,82 @@
     });
 
 
-    /* Warehouse project viewer */
+    /* =========================================
+       PROJECT MODALS
+    ========================================= */
 
-    const warehouseCard = document.querySelector('[data-project="warehouse"]');
-    const warehouseModal = document.getElementById('warehouse-modal');
-    const closeModal = document.querySelector('.project-modal-close');
+    function setupProjectModal(projectName) {
 
-    const drawingFrame = document.getElementById('drawing-frame');
-    const drawingTitle = document.getElementById('drawing-title');
-    const drawingCounter = document.getElementById('drawing-counter');
-    const openPdf = document.getElementById('open-pdf');
+        const card = document.querySelector(
+            `[data-project="${projectName}"]`
+        );
 
-    const previousDrawing = document.getElementById('previous-drawing');
-    const nextDrawing = document.getElementById('next-drawing');
+        const modal = document.getElementById(
+            `${projectName}-modal`
+        );
 
-
-    const drawings = [
-        {
-            title: 'Client Produced Warehouse Floor Plan',
-            file: 'assets/projects/warehouse/WarehouseORIGINAL.pdf'
-        },
-        {
-            title: 'Gas Line Documentation',
-            file: 'assets/projects/warehouse/WarehouseGas.pdf'
-        },
-        {
-            title: 'Interior Additions',
-            file: 'assets/projects/warehouse/WarehouseUPDATED.pdf'
-        }
-    ];
-
-    let currentDrawing = 0;
+        const closeButton = modal.querySelector(
+            '.project-modal-close'
+        );
 
 
-    function showDrawing(index) {
+        card.addEventListener('click', () => {
 
-        currentDrawing = index;
+            modal.classList.add('active');
 
-        const drawing = drawings[currentDrawing];
+            document.body.classList.add('modal-open');
 
-        drawingTitle.textContent = drawing.title;
+        });
 
-        drawingFrame.src = drawing.file;
 
-        openPdf.href = drawing.file;
+        closeButton.addEventListener('click', () => {
 
-        drawingCounter.textContent =
-            String(currentDrawing + 1).padStart(2, '0') +
-            ' / ' +
-            String(drawings.length).padStart(2, '0');
+            modal.classList.remove('active');
 
-        previousDrawing.disabled = currentDrawing === 0;
-        nextDrawing.disabled = currentDrawing === drawings.length - 1;
+            document.body.classList.remove('modal-open');
+
+        });
+
+
+        modal.addEventListener('click', (event) => {
+
+            if (event.target === modal) {
+
+                modal.classList.remove('active');
+
+                document.body.classList.remove('modal-open');
+
+            }
+
+        });
+
     }
 
 
-    function openWarehouseProject() {
+    /* Initialize project modals */
 
-        warehouseModal.classList.add('active');
-
-        document.body.classList.add('modal-open');
-
-        showDrawing(0);
-    }
+    setupProjectModal('warehouse');
+    setupProjectModal('passport');
+    setupProjectModal('holiday');
 
 
-    function closeWarehouseProject() {
-
-        warehouseModal.classList.remove('active');
-
-        document.body.classList.remove('modal-open');
-    }
-
-
-    warehouseCard.addEventListener('click', openWarehouseProject);
-
-    closeModal.addEventListener('click', closeWarehouseProject);
-
-
-    previousDrawing.addEventListener('click', () => {
-
-        if (currentDrawing > 0) {
-            showDrawing(currentDrawing - 1);
-        }
-
-    });
-
-
-    nextDrawing.addEventListener('click', () => {
-
-        if (currentDrawing < drawings.length - 1) {
-            showDrawing(currentDrawing + 1);
-        }
-
-    });
-
-
-    /* Close when clicking the dark background */
-
-    warehouseModal.addEventListener('click', (event) => {
-
-        if (event.target === warehouseModal) {
-            closeWarehouseProject();
-        }
-
-    });
-
-
-    /* Escape key closes the viewer */
+    /* Escape key closes any open project */
 
     document.addEventListener('keydown', (event) => {
 
-        if (event.key === 'Escape' &&
-            warehouseModal.classList.contains('active')) {
+        if (event.key === 'Escape') {
 
-            closeWarehouseProject();
+            document
+                .querySelectorAll('.project-modal.active')
+                .forEach(modal => {
+                    modal.classList.remove('active');
+                });
+
+            document.body.classList.remove('modal-open');
 
         }
 
     });
-	   /* Passport Dinner Series */
-
-const passportCard = document.querySelector('[data-project="passport"]');
-const passportModal = document.getElementById('passport-modal');
-const passportClose = passportModal.querySelector('.project-modal-close');
-
-passportCard.addEventListener('click', () => {
-    passportModal.classList.add('active');
-    document.body.classList.add('modal-open');
-});
-
-passportClose.addEventListener('click', () => {
-    passportModal.classList.remove('active');
-    document.body.classList.remove('modal-open');
-});
-
-passportModal.addEventListener('click', (event) => {
-    if (event.target === passportModal) {
-        passportModal.classList.remove('active');
-        document.body.classList.remove('modal-open');
-    }
-});
-
-
-/* Holiday Event Elevation */
-
-const holidayCard = document.querySelector('[data-project="holiday"]');
-const holidayModal = document.getElementById('holiday-modal');
-const holidayClose = holidayModal.querySelector('.project-modal-close');
-
-holidayCard.addEventListener('click', () => {
-    holidayModal.classList.add('active');
-    document.body.classList.add('modal-open');
-});
-
-holidayClose.addEventListener('click', () => {
-    holidayModal.classList.remove('active');
-    document.body.classList.remove('modal-open');
-});
-
-holidayModal.addEventListener('click', (event) => {
-    if (event.target === holidayModal) {
-        holidayModal.classList.remove('active');
-        document.body.classList.remove('modal-open');
-    }
-});
-
-
-/* Escape key closes all project modals */
-
-document.addEventListener('keydown', (event) => {
-
-    if (event.key === 'Escape') {
-
-        document.querySelectorAll('.project-modal.active').forEach(modal => {
-            modal.classList.remove('active');
-        });
-
-        document.body.classList.remove('modal-open');
-    }
-
-});
 </script>
 </body>
 </html>
