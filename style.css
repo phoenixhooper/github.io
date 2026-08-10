@@ -538,3 +538,20 @@ body.modal-open {
         padding: 25px;
     }
 }
+/* Warehouse Project Perspective */
+
+.warehouse-perspective {
+    max-width: 850px;
+}
+
+.warehouse-perspective p {
+    margin-bottom: 16px;
+}
+
+.warehouse-perspective p:last-child {
+    margin-bottom: 0;
+}
+
+.warehouse-perspective strong {
+    color: var(--ink);
+}
