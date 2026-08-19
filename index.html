@@ -1734,7 +1734,157 @@
         });
 
     });
+/* =========================================
+   RECOMMENDATION CAROUSEL
+========================================= */
 
+const recommendationCards =
+    document.querySelectorAll('.recommendation-card');
+
+const recommendationDots =
+    document.querySelectorAll('.recommendation-dot');
+
+const recommendationPrev =
+    document.querySelector('#recommendation-prev');
+
+const recommendationNext =
+    document.querySelector('#recommendation-next');
+
+const recommendationCarousel =
+    document.querySelector('.recommendation-carousel');
+
+let currentRecommendation = 0;
+let recommendationTimer;
+
+
+function showRecommendation(index) {
+
+    if (index < 0) {
+        index = recommendationCards.length - 1;
+    }
+
+    if (index >= recommendationCards.length) {
+        index = 0;
+    }
+
+    const currentCard =
+        recommendationCards[currentRecommendation];
+
+    const nextCard =
+        recommendationCards[index];
+
+
+    if (currentRecommendation === index) {
+        return;
+    }
+
+
+    currentCard.classList.remove('slide-in');
+    currentCard.classList.add('slide-out');
+
+
+    setTimeout(() => {
+
+        currentCard.style.display = 'none';
+        currentCard.classList.remove('slide-out');
+
+        nextCard.style.display = 'grid';
+        nextCard.classList.add('slide-in');
+
+        currentRecommendation = index;
+
+
+        recommendationDots.forEach((dot, dotIndex) => {
+
+            dot.classList.toggle(
+                'active',
+                dotIndex === currentRecommendation
+            );
+
+        });
+
+    }, 450);
+}
+
+
+function nextRecommendation() {
+
+    showRecommendation(
+        currentRecommendation + 1
+    );
+
+}
+
+
+function previousRecommendation() {
+
+    showRecommendation(
+        currentRecommendation - 1
+    );
+
+}
+
+
+function startRecommendationTimer() {
+
+    clearInterval(recommendationTimer);
+
+    recommendationTimer = setInterval(() => {
+
+        nextRecommendation();
+
+    }, 8500);
+
+}
+
+
+recommendationNext.addEventListener(
+    'click',
+    () => {
+
+        nextRecommendation();
+        startRecommendationTimer();
+
+    }
+);
+
+
+recommendationPrev.addEventListener(
+    'click',
+    () => {
+
+        previousRecommendation();
+        startRecommendationTimer();
+
+    }
+);
+
+
+recommendationDots.forEach((dot, index) => {
+
+    dot.addEventListener('click', () => {
+
+        showRecommendation(index);
+        startRecommendationTimer();
+
+    });
+
+});
+
+
+recommendationCarousel.addEventListener(
+    'mouseenter',
+    () => clearInterval(recommendationTimer)
+);
+
+
+recommendationCarousel.addEventListener(
+    'mouseleave',
+    () => startRecommendationTimer()
+);
+
+
+startRecommendationTimer();
 
     /* =========================================
        PROJECT MODALS
