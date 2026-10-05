@@ -265,9 +265,12 @@ projectButtons.forEach(button => {
 
 /* Back to project list */
 
-document
-    .getElementById("back-projects")
-    .addEventListener("click", () => {
+const backProjects =
+    document.getElementById("back-projects");
+
+if (backProjects) {
+
+    backProjects.addEventListener("click", () => {
 
         detailModal.close();
 
@@ -276,6 +279,8 @@ document
         body.classList.add("modal-open");
 
     });
+
+}
 
 
 /* =========================================================
@@ -392,10 +397,8 @@ const referenceData = {
 const referenceButtons =
     document.querySelectorAll("[data-reference]");
 
-
 const recommendationsModal =
     document.getElementById("modal-recommendations");
-
 
 const referenceModal =
     document.getElementById("modal-reference-detail");
@@ -499,9 +502,12 @@ referenceButtons.forEach(button => {
 
 /* Back to recommendations */
 
-document
-    .getElementById("back-references")
-    .addEventListener("click", () => {
+const backReferences =
+    document.getElementById("back-references");
+
+if (backReferences) {
+
+    backReferences.addEventListener("click", () => {
 
         referenceModal.close();
 
@@ -510,6 +516,8 @@ document
         body.classList.add("modal-open");
 
     });
+
+}
 
 
 /* =========================================================
