@@ -667,7 +667,6 @@
     </dialog>
 
 
-
     <!-- =========================================================
          RECOMMENDATIONS
     ========================================================== -->
@@ -710,6 +709,8 @@
 
 
             <div class="reference-grid">
+
+                <!-- SCOTT -->
 
                 <button
                     class="reference-card"
@@ -755,6 +756,8 @@
                 </button>
 
 
+                <!-- JOE -->
+
                 <button
                     class="reference-card"
                     data-reference="joe"
@@ -790,313 +793,194 @@
 
                         <span class="reference-open">
                             READ RECOMMENDATION
-                         <!-- =========================================================
-     RECOMMENDATIONS
-========================================================== -->
+                            <b>↗</b>
+                        </span>
 
-<dialog
-    class="modal"
-    id="modal-recommendations"
->
+                    </div>
 
-    <div class="modal-inner recommendations-layout">
-
-        <button
-            class="close"
-            data-close
-            aria-label="Close"
-            type="button"
-        >
-            ×
-        </button>
+                </button>
 
 
-        <header class="modal-header">
-            <span>05 / RECOMMENDATIONS</span>
-            <i></i>
-        </header>
+                <!-- CHRIS -->
+
+                <button
+                    class="reference-card"
+                    data-reference="chris"
+                    type="button"
+                >
+
+                    <div class="reference-number">
+                        03
+                    </div>
 
 
-        <div class="recommendations-intro">
+                    <div class="reference-content">
 
-            <p class="eyebrow">
-                WHAT OTHERS SAY
-            </p>
+                        <p class="eyebrow">
+                            ARCHITECTURE · DESIGN
+                        </p>
 
-            <h1 class="modal-title">
-                A bit of<br>
-                perspective.
-            </h1>
+                        <h2>
+                            Chris Morrey
+                        </h2>
 
-        </div>
+                        <p class="reference-role">
+                            Research Associate
+                            <span>/</span>
+                            Christopher C. Gibbs College of Architecture
+                        </p>
 
+                        <p class="reference-preview">
+                            “Phoenix showed himself to be thoughtful and
+                            measured in class, and consistently worked
+                            at a high level.”
+                        </p>
 
-        <div class="reference-grid">
+                        <span class="reference-open">
+                            READ RECOMMENDATION
+                            <b>↗</b>
+                        </span>
 
-            <button
-                class="reference-card"
-                data-reference="scott"
-                type="button"
-            >
+                    </div>
 
-                <div class="reference-number">
-                    01
-                </div>
+                </button>
 
-
-                <div class="reference-content">
-
-                    <p class="eyebrow">
-                        PROJECT MANAGEMENT
-                        · PROCESS IMPROVEMENT
-                    </p>
-
-                    <h2>
-                        Scott Huggins
-                    </h2>
-
-                    <p class="reference-role">
-                        Director of Manufacturing
-                        <span>/</span>
-                        ProOK Processing
-                    </p>
-
-                    <p class="reference-preview">
-                        “Phoenix has a strong ability to understand
-                        the larger purpose of a project while still
-                        giving proper attention to the details...”
-                    </p>
-
-                    <span class="reference-open">
-                        READ RECOMMENDATION
-                        <b>↗</b>
-                    </span>
-
-                </div>
-
-            </button>
+            </div>
 
 
-            <button
-                class="reference-card"
-                data-reference="joe"
-                type="button"
-            >
-
-                <div class="reference-number">
-                    02
-                </div>
-
-
-                <div class="reference-content">
-
-                    <p class="eyebrow">
-                        CAD · SPACE PLANNING
-                    </p>
-
-                    <h2>
-                        Joe Wilson
-                    </h2>
-
-                    <p class="reference-role">
-                        Owner
-                        <span>/</span>
-                        Salute Bene
-                    </p>
-
-                    <p class="reference-preview">
-                        “His attention to detail, strong problem-solving
-                        skills, and practical approach consistently
-                        helped us develop efficient solutions...”
-                    </p>
-
-                    <span class="reference-open">
-                        READ RECOMMENDATION
-                        <b>↗</b>
-                    </span>
-
-                </div>
-
-            </button>
-
-
-            <button
-                class="reference-card"
-                data-reference="chris"
-                type="button"
-            >
-
-                <div class="reference-number">
-                    03
-                </div>
-
-
-                <div class="reference-content">
-
-                    <p class="eyebrow">
-                        ARCHITECTURE · DESIGN
-                    </p>
-
-                    <h2>
-                        Chris Morrey
-                    </h2>
-
-                    <p class="reference-role">
-                        Research Associate
-                        <span>/</span>
-                        Christopher C. Gibbs College of Architecture
-                    </p>
-
-                    <p class="reference-preview">
-                        “Phoenix showed himself to be thoughtful and
-                        measured in class, and consistently worked
-                        at a high level.”
-                    </p>
-
-                    <span class="reference-open">
-                        READ RECOMMENDATION
-                        <b>↗</b>
-                    </span>
-
-                </div>
-
-            </button>
+            <div class="reference-footer">
+                <span>PROFESSIONAL RECOMMENDATIONS</span>
+                <span>03 REFERENCES</span>
+            </div>
 
         </div>
 
+    </dialog>
 
-        <div class="reference-footer">
-            <span>PROFESSIONAL RECOMMENDATIONS</span>
-            <span>03 REFERENCES</span>
-        </div>
-
-    </div>
-
-</dialog>
 
 
     <!-- =========================================================
          RECOMMENDATION DETAIL
     ========================================================== -->
 
-<!-- =========================================================
-     RECOMMENDATION DETAIL
-========================================================== -->
+    <dialog
+        class="modal recommendation-detail"
+        id="modal-reference-detail"
+    >
 
-<dialog
-    class="modal recommendation-detail"
-    id="modal-reference-detail"
->
+        <div class="modal-inner">
 
-    <div class="modal-inner">
-
-        <button
-            class="close"
-            data-close
-            aria-label="Close"
-            type="button"
-        >
-            ×
-        </button>
+            <button
+                class="close"
+                data-close
+                aria-label="Close"
+                type="button"
+            >
+                ×
+            </button>
 
 
-        <header class="modal-header">
-            <span id="reference-detail-label">
-                01 / SCOTT HUGGINS
-            </span>
-            <i></i>
-        </header>
+            <header class="modal-header">
+                <span id="reference-detail-label">
+                    01 / SCOTT HUGGINS
+                </span>
+                <i></i>
+            </header>
 
 
-        <div class="reference-detail-layout">
+            <div class="reference-detail-layout">
 
-            <div class="reference-detail-side">
+                <div class="reference-detail-side">
 
-                <p class="eyebrow">
-                    PROFESSIONAL RECOMMENDATION
-                </p>
-
-
-                <div class="reference-initial">
-                    <span id="reference-initial">SH</span>
-                </div>
+                    <p class="eyebrow">
+                        PROFESSIONAL RECOMMENDATION
+                    </p>
 
 
-                <h2 id="reference-detail-name">
-                    Scott Huggins
-                </h2>
+                    <div class="reference-initial">
+                        <span id="reference-initial">
+                            SH
+                        </span>
+                    </div>
 
 
-                <p id="reference-detail-role">
-                    Director of Manufacturing<br>
-                    ProOK Processing
-                </p>
-
-
-                <div class="reference-tags">
-
-                    <span id="reference-tag-1">
-                        PROJECT MANAGEMENT
-                    </span>
-
-                    <span id="reference-tag-2">
-                        PROCESS IMPROVEMENT
-                    </span>
-
-                    <span id="reference-tag-3">
-                        OPERATIONAL PLANNING
-                    </span>
-
-                </div>
-
-            </div>
-
-
-            <div class="reference-letter">
-
-                <span class="quote-large">“</span>
-
-
-                <blockquote id="reference-quote">
-                    Phoenix has a strong ability to understand the
-                    larger purpose of a project while still giving
-                    proper attention to the details that determine
-                    whether it succeeds. He could take a complex
-                    operational need, help organize it into an
-                    actionable plan, and produce clear documentation
-                    that allowed the rest of the team to move forward
-                    with confidence.
-                </blockquote>
-
-
-                <div class="reference-source">
-
-                    <strong id="reference-source-name">
+                    <h2 id="reference-detail-name">
                         Scott Huggins
-                    </strong>
+                    </h2>
 
-                    <span id="reference-source-title">
-                        Director of Manufacturing · ProOK Processing
-                    </span>
+
+                    <p id="reference-detail-role">
+                        Director of Manufacturing<br>
+                        ProOK Processing
+                    </p>
+
+
+                    <div class="reference-tags">
+
+                        <span id="reference-tag-1">
+                            PROJECT MANAGEMENT
+                        </span>
+
+                        <span id="reference-tag-2">
+                            PROCESS IMPROVEMENT
+                        </span>
+
+                        <span id="reference-tag-3">
+                            OPERATIONAL PLANNING
+                        </span>
+
+                    </div>
 
                 </div>
 
 
-                <button
-                    class="back-references"
-                    id="back-references"
-                    type="button"
-                >
-                    ← BACK TO RECOMMENDATIONS
-                </button>
+                <div class="reference-letter">
+
+                    <span class="quote-large">
+                        “
+                    </span>
+
+
+                    <blockquote id="reference-quote">
+                        Phoenix has a strong ability to understand the
+                        larger purpose of a project while still giving
+                        proper attention to the details that determine
+                        whether it succeeds. He could take a complex
+                        operational need, help organize it into an
+                        actionable plan, and produce clear documentation
+                        that allowed the rest of the team to move forward
+                        with confidence.
+                    </blockquote>
+
+
+                    <div class="reference-source">
+
+                        <strong id="reference-source-name">
+                            Scott Huggins
+                        </strong>
+
+                        <span id="reference-source-title">
+                            Director of Manufacturing · ProOK Processing
+                        </span>
+
+                    </div>
+
+
+                    <button
+                        class="back-references"
+                        id="back-references"
+                        type="button"
+                    >
+                        ← BACK TO RECOMMENDATIONS
+                    </button>
+
+                </div>
 
             </div>
 
         </div>
 
-    </div>
-
-</dialog>
+    </dialog>
 
 
     <!-- =========================================================
