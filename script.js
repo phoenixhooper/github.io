@@ -233,7 +233,26 @@ const referenceData = {
         quote:
             "His attention to detail, strong problem-solving skills, and practical approach consistently helped us develop efficient solutions and successfully execute numerous initiatives."
     }
+    chris: {
+        label: "03 / CHRIS MORREY",
+        initial: "CM",
+        name: "Chris Morrey",
+        role: "Research Associate<br>Christopher C. Gibbs College of Architecture<br>University of Oklahoma",
 
+        tags: [
+            "ARCHITECTURE",
+            "DESIGN",
+            "COLLABORATION"
+        ],
+
+        quote: `Phoenix showed himself to be thoughtful and measured in class, and consistently worked at a high level. He gave deliberate attention and careful execution to his projects despite constraints on his time and care that would have stopped many students in their tracks.
+
+Phoenix is professional in the best sense: he invests time in his peers, contributes his ideas, shares information and elevates the standard for everyone around him by helping to create a focused atmosphere. He is a pleasure to work with, and I think he is primed to make a real contribution in any field he engages.`,
+
+        sourceName: "Chris Morrey",
+        sourceTitle: "Research Associate · Christopher C. Gibbs College of Architecture · University of Oklahoma"
+    }
+};
 };
 
 
